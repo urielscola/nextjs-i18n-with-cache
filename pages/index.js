@@ -1,5 +1,5 @@
 import React from 'react';
-import { i18n, withTranslation } from '../../i18n';
+import { i18n, withTranslation } from '../i18n';
 
 class Home extends React.Component {
   static async getInitialProps() {

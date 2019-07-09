@@ -1,5 +1,5 @@
 import React from 'react';
-import { withTranslation } from '../../i18n';
+import { withTranslation } from '../i18n';
 
 class Error extends React.Component {
   static getInitialProps({ res, err }) {

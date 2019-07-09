@@ -5,10 +5,9 @@
   "author": "Uriel Scola <urielsgc@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "node server.js",
-    "start": "next start",
-    "build": "next build",
-    "test": "jest"
+    "dev": "node index.js",
+    "start": "NODE_ENV=production node index.js",
+    "build": "next build"
   },
   "dependencies": {
     "axios": "^0.18.0",

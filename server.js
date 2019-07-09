@@ -4,23 +4,12 @@ const LRUCache = require('lru-cache');
 const nextI18NextMiddleware = require('next-i18next/middleware');
 const nextI18next = require('./i18n');
 
-const routes = require('./src/routes');
+const routes = require('./routes');
 
 const app = next({
-  dev: process.env.NODE_ENV !== 'production',
-  dir: './src'
+  dev: process.env.NODE_ENV !== 'production'
 });
 const handler = routes.getRequestHandler(app);
-
-(async () => {
-  await app.prepare();
-  const server = express();
-  server.use(nextI18NextMiddleware(nextI18next));
-
-  server.get('/_next/*', handler);
-  server.get('*', renderAndCache);
-  server.listen(3001);
-})();
 
 // Cache configuration parameters.
 const ssrCache = new LRUCache({
@@ -54,3 +43,14 @@ const renderAndCache = async (req, res) => {
     return app.renderError(err, req, res, req.path, req.query);
   }
 };
+
+(async () => {
+  await app.prepare();
+  const server = express();
+  server.use(nextI18NextMiddleware(nextI18next));
+
+  server.get('/_next/*', handler);
+  server.get('/static/locales/**/*.json', handler);
+  server.get('*', renderAndCache);
+  server.listen(3001);
+})();
