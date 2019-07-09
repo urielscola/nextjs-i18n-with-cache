@@ -1,8 +1,7 @@
 {
-  "name": "vttr-client",
+  "name": "nextjs-i18n-cache",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:urielscola/vttr-client.git",
   "author": "Uriel Scola <urielsgc@gmail.com>",
   "license": "MIT",
   "scripts": {
